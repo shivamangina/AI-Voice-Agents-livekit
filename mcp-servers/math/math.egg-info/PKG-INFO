@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: math
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastmcp>=2.9.2
+
+
+``` 
+{
+   "mcpServers": {
+     "math-server": {
+       "command": "uvx",
+       "args": [
+         "--from","/Users/shivakumarmangina/Desktop/mcpserver/elizaos-hackathon/mcp-servers/math",
+         "main.py"
+       ]
+     }
+   }
+ }
+ ```
