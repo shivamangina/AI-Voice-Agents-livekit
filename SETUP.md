@@ -81,19 +81,7 @@ ANTHROPIC_API_KEY=your_anthropic_key
 SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_PROJECT_ID
 PRIVATE_KEY=your_wallet_private_key
 ```
-
-### Step 2: Smart Contract Setup (Optional)
-```bash
-# Install contract dependencies
-cd contracts
-pnpm install
-
-# Compile contracts
-pnpm compile
-
-# Deploy to Sepolia (requires ETH)
-pnpm deploy:sepolia
-```
+ 
 
 ### Step 3: ElizaOS Setup (Optional)
 ```bash
@@ -115,9 +103,6 @@ pnpm dev
 ├── eliza-agent/               # ElizaOS agent definitions
 │   ├── src/agents/            # 5 specialized agents
 │   └── src/orchestrator.ts    # Agent coordination
-├── contracts/                 # Smart contracts
-│   ├── CustomerSupportOracle.sol
-│   └── scripts/deploy.ts
 ├── services/                  # Backend services
 │   └── chainlink/             # Blockchain integration
 └── components/                # UI components
@@ -218,7 +203,6 @@ pnpm dev --port 3001
 
 ### For Development
 1. Add real AI API integration
-2. Deploy smart contracts to mainnet
 3. Add WebSocket for real-time updates
 4. Implement actual speech-to-text
 

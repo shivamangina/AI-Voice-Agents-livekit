@@ -38,7 +38,10 @@
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4.1.10",
-    "zod": "3.24.2"
+    "zod": "3.24.2",
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -47,7 +50,8 @@
     "prettier": "3.5.3",
     "tsup": "8.5.0",
     "typescript": "^5.6.3",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "ts-node": "^10.9.1"
   },
   "scripts": {
     "start": "elizaos start",
@@ -70,7 +74,9 @@
     "cy:test": "bun run test:install && cypress run --component --reporter spec",
     "cypress:component": "bun run test:install && cypress run --component",
     "cypress:e2e": "bun run test:install && cypress run --e2e",
-    "cypress:open": "bun run test:install && cypress open"
+    "cypress:open": "bun run test:install && cypress open",
+    "start-server": "node src/server.ts",
+    "start-server-dev": "ts-node src/server.ts"
   },
   "publishConfig": {
     "access": "public"

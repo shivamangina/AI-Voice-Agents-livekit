@@ -16,17 +16,17 @@ export const character: Character = {
     ...(process.env.GOOGLE_GENERATIVE_AI_API_KEY ? ['@elizaos/plugin-google-genai'] : []),
     ...(process.env.OPENAI_API_KEY ? ['@elizaos/plugin-openai'] : []),
     ...(!process.env.ANTHROPIC_API_KEY &&
-    !process.env.OPENROUTER_API_KEY &&
-    !process.env.GOOGLE_GENERATIVE_AI_API_KEY &&
-    !process.env.OLLAMA_API_ENDPOINT &&
-    !process.env.OPENAI_API_KEY
+      !process.env.OPENROUTER_API_KEY &&
+      !process.env.GOOGLE_GENERATIVE_AI_API_KEY &&
+      !process.env.OLLAMA_API_ENDPOINT &&
+      !process.env.OPENAI_API_KEY
       ? ['@elizaos/plugin-local-ai']
       : []),
     ...(process.env.DISCORD_API_TOKEN ? ['@elizaos/plugin-discord'] : []),
     ...(process.env.TWITTER_API_KEY &&
-    process.env.TWITTER_API_SECRET_KEY &&
-    process.env.TWITTER_ACCESS_TOKEN &&
-    process.env.TWITTER_ACCESS_TOKEN_SECRET
+      process.env.TWITTER_API_SECRET_KEY &&
+      process.env.TWITTER_ACCESS_TOKEN &&
+      process.env.TWITTER_ACCESS_TOKEN_SECRET
       ? ['@elizaos/plugin-twitter']
       : []),
     ...(process.env.TELEGRAM_BOT_TOKEN ? ['@elizaos/plugin-telegram'] : []),

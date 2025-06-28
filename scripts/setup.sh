@@ -26,12 +26,6 @@ if [ ! -f .env.local ]; then
     echo "   Required: OPENAI_API_KEY, ANTHROPIC_API_KEY, SEPOLIA_RPC_URL, PRIVATE_KEY"
 fi
 
-# Install contract dependencies
-echo "📦 Installing smart contract dependencies..."
-cd contracts
-pnpm install
-cd ..
-
 # Install ElizaOS dependencies
 echo "📦 Installing ElizaOS dependencies..."
 cd eliza-agent
@@ -43,10 +37,9 @@ echo "✅ Setup complete!"
 echo ""
 echo "🎯 Next steps:"
 echo "1. Edit .env.local with your API keys and blockchain configuration"
-echo "2. Deploy smart contracts: cd contracts && pnpm deploy:sepolia"
-echo "3. Start ElizaOS agents: cd eliza-agent && pnpm dev"
-echo "4. Start frontend: pnpm dev"
-echo "5. Visit http://localhost:3000/support-dashboard"
+echo "2. Start ElizaOS agents: cd eliza-agent && pnpm dev"
+echo "3. Start frontend: pnpm dev"
+echo "4. Visit http://localhost:3000/support-dashboard"
 echo ""
 echo "🔗 Useful links:"
 echo "- Chromion Hackathon: https://chromion-chainlink-hackathon.devfolio.co/"
