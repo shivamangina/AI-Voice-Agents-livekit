@@ -1,10 +1,3 @@
-/**
- * TODO: another vibe-coded component.
- * I think it's not working properly with nested fields,
- * i.e. z.number().describe("A number").optional() return description
- * but z.number().optional().describe("A number") does not.
- */
-
 import { useEffect } from "react";
 import mcpClient from "@/services/mcp/client";
 import { errorAtom, reloadToolsAtom } from "@/services/mcp/atoms";
@@ -35,15 +28,18 @@ export function ToolsSidebar() {
     <div className="w-64 border-l flex flex-col h-full bg-sidebar-background dark:bg-sidebar-background">
       <div className="p-4 border-b flex gap-2 items-center">
         <h2 className="text-lg font-semibold">Available Tools</h2>
+        <a className="text-sm text-muted-foreground hover:text-foreground cursor-pointer">
+          Reset
+        </a>
         <a
           className="text-sm text-muted-foreground hover:text-foreground cursor-pointer"
-          onClick={async () => {
-            mcpClient.deleteTools();
-            await fetch("/api/tools", { method: "DELETE" });
-            setReloadTools(true);
-          }}
+          // onClick={async () => {
+          //   mcpClient.getTools();
+          //   await fetch("/api/tools", { method: "GET" });
+          //   setReloadTools(true);
+          // }}
         >
-          (Reset)
+          Add
         </a>
       </div>
       <div className="flex-grow overflow-y-auto">
@@ -56,21 +52,24 @@ export function ToolsSidebar() {
             <div className="p-4 text-sm text-red-500">{error}</div>
           ) : (
             tools &&
-            tools.breakdown &&
-            Object.entries(tools.breakdown).map(([server, tools]) => (
+            tools.tools &&
+            Object.entries(tools.tools).map(([server, tools]) => (
               <AccordionItem key={server} value={server}>
                 <div className="p-4 border-b last:border-b-0 hover:bg-gray-100 dark:hover:bg-gray-700">
                   <AccordionTrigger>{server}</AccordionTrigger>
                   <AccordionContent>
                     <div className="flex flex-col gap-4">
-                      {Object.entries(tools).map(([name, tool]) => (
-                        <div key={`${server}-${name}`}>
-                          <p className="text-sm font-medium">{name}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {tool.description}
-                          </p>
-                        </div>
-                      ))}
+                      <div key={`${server}-${name}`}>
+                        <p className="text-sm font-medium">{"description"}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {tools.description}
+                        </p>
+                        <p className="text-sm font-medium">{"Parameters"}</p>
+                        <p className="text-sm font-mono  text-muted-foreground">
+                          
+                          {JSON.stringify(tools.parameters)}
+                        </p>
+                      </div>
                     </div>
                   </AccordionContent>
                 </div>

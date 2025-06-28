@@ -43,23 +43,7 @@ import Keybinding from "@/components/keybinding";
 import { cn } from "@/lib/utils";
 import { ServerConfigDialog } from "@/components/server-config-dialog";
 import { breakdownAtom, isMcpConfigOpenAtom } from "@/services/mcp/atoms";
-
-// Function to format date into a pretty relative time
-const formatRelativeTime = (dateString: string): string => {
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  if (diffInSeconds < 60) {
-    return `${diffInSeconds}s`;
-  } else if (diffInSeconds < 3600) {
-    return `${Math.floor(diffInSeconds / 60)}m`;
-  } else if (diffInSeconds < 86400) {
-    return `${Math.floor(diffInSeconds / 3600)}h`;
-  } else {
-    return `${Math.floor(diffInSeconds / 86400)}d`;
-  }
-};
+import { formatRelativeTime } from "../lib/formatRelativeTime";
 
 export default function ChatPage() {
   // Ref for the scroll viewport
@@ -231,10 +215,10 @@ export default function ChatPage() {
       }
 
       // Configure MCP
-      if (event.key === "m") {
-        event.preventDefault();
-        setMcpConfigOpen(true);
-      }
+      // if (event.key === "m") {
+      //   event.preventDefault();
+      //   setMcpConfigOpen(true);
+      // }
 
       // Configure Exports
       if (event.key === "e") {
@@ -567,13 +551,13 @@ export default function ChatPage() {
                 </div>
                 <div className="flex gap-2">
                   <ServerConfigDialog />
-                  <Button
+                  {/* <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setMcpConfigOpen(true)}
                   >
                     <Keybinding>M</Keybinding> MCP
-                  </Button>
+                  </Button> */}
                   {commitThread.length > 0 && (
                     <>
                       <Export />

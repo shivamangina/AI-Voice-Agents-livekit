@@ -26,24 +26,9 @@ class MCPClient {
   private setBreakdown(breakdown: Record<string, Record<string, Tool>>) {
     this.state.set(breakdownAtom, breakdown);
   }
-  private setIsOpen(isOpen: boolean) {
-    this.state.set(isMcpConfigOpenAtom, isOpen);
-  }
+
   private setServerConfig(serverConfig: Record<string, unknown>) {
     this.state.set(serverConfigAtom, serverConfig);
-  }
-
-  private get serverConfig() {
-    return this.state.get(serverConfigAtom);
-  }
-
-  public parseServerConfig(mcpServersText: string) {
-    try {
-      const parsed = JSON.parse(mcpServersText);
-      this.setServerConfig(parsed);
-    } catch {
-      this.setError("Invalid JSON");
-    }
   }
 
   public async getTools(): Promise<void> {
@@ -53,7 +38,8 @@ class MCPClient {
         throw new Error("Failed to fetch tools");
       }
       const data = await response.json();
-      this.setTools({ breakdown: data.breakdown });
+
+      this.setTools(data);
       this.setBreakdown(data.breakdown);
       this.setServerConfig(data.config || { mcpServers: {} });
     } catch (err) {
@@ -62,39 +48,6 @@ class MCPClient {
       );
     } finally {
       this.setIsLoading(false);
-    }
-  }
-
-  public async deleteTools(): Promise<void> {
-    this.setTools({});
-  }
-
-  public async handleSave() {
-    try {
-      this.setIsLoading(true);
-      await this.saveServerConfig();
-      this.setIsOpen(false);
-      await this.getTools();
-    } catch (error) {
-      console.error("Error saving server config:", error);
-    } finally {
-      this.setIsLoading(false);
-    }
-  }
-  public async saveServerConfig() {
-    try {
-      const response = await fetch("/api/tools", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.serverConfig),
-      });
-      const data = await response.json();
-      console.log("Tools saved:", data);
-    } catch (error) {
-      console.error("Error saving tools:", error);
-      throw error;
     }
   }
 }

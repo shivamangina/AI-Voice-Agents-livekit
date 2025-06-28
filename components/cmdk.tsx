@@ -27,17 +27,14 @@ import {
 import { availableModelSchema, type AvailableModel } from "@/sharedTypes";
 import { ChevronRight } from "lucide-react";
 import gitChat from "@/services/gitchat/client";
-import { isMcpLoadingAtom, isMcpConfigOpenAtom } from "@/services/mcp/atoms";
+import { isMcpLoadingAtom } from "@/services/mcp/atoms";
 
 function setModelName(modelName: AvailableModel) {
   const store = getDefaultStore();
   store.set(modelNameAtom, modelName);
 }
 
-function setMcpConfigOpen(open: boolean) {
-  const store = getDefaultStore();
-  store.set(isMcpConfigOpenAtom, open);
-}
+
 
 function setExportDialogOpen(open: boolean) {
   const store = getDefaultStore();
@@ -56,13 +53,6 @@ const commandTreeAtom = atomWithStorage<Command[]>("commandTree", [
   {
     name: "Set Model",
     id: "set-model",
-  },
-  {
-    name: "MCP Config",
-    id: "mcp-config",
-    onSelect: () => {
-      setMcpConfigOpen(true);
-    },
   },
   {
     name: "Export Chat",
