@@ -383,8 +383,8 @@ export default function ChatPage() {
           <ScrollArea className="flex-1 p-4 space-y-4" ref={scrollAreaRef}>
             <div className="max-w-xs lg:max-w-3xl mx-auto space-y-4 pb-20">
               {commitThread.length === 0 &&
-              !isLoading &&
-              currentCommitChildren.length === 0 ? (
+                !isLoading &&
+                currentCommitChildren.length === 0 ? (
                 <div className="text-center py-20 flex flex-col items-center gap-4">
                   <span className="text-muted-foreground">
                     <span className="text-xl text-muted-foreground flex items-center gap-2 justify-center">
@@ -499,10 +499,10 @@ export default function ChatPage() {
                             <span className="text-muted-foreground truncate">
                               {currentCommitChildrenIndexMap[commit.id] !==
                                 undefined && (
-                                <Keybinding>
-                                  {currentCommitChildrenIndexMap[commit.id] + 1}
-                                </Keybinding>
-                              )}
+                                  <Keybinding>
+                                    {currentCommitChildrenIndexMap[commit.id] + 1}
+                                  </Keybinding>
+                                )}
                               <span className="ml-2">{commit.author}</span>
                             </span>
                             <span>
@@ -620,6 +620,9 @@ export default function ChatPage() {
         {/* Tools Sidebar on the right */}
         <ToolsSidebar />
       </div>
+
+     
+
     </SidebarProvider>
   );
 }
