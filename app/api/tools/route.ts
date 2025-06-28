@@ -1,7 +1,3 @@
-// TODO: Review this, was vibe-coded but works well enough.
-// I think it's not working properly with nested fields,
-// i.e. z.number().describe("A number").optional() return description
-// but z.number().optional().describe("A number") does not.
 
 import { NextResponse } from "next/server";
 import { getTools } from "@/lib/tools";
