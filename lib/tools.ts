@@ -1,5 +1,23 @@
-import { Tool, tool } from "ai";
+import { Tool, tool, experimental_createMCPClient } from "ai";
+import { Experimental_StdioMCPTransport } from "ai/mcp-stdio";
 
+const transport = new Experimental_StdioMCPTransport({
+  command: "uv",
+  args: [
+    "run",
+    "--with",
+    "fastmcp",
+    "fastmcp",
+    "run",
+    "/Users/shivakumarmangina/Desktop/mcpserver/elizaos-hackathon/mcp-servers/dice-server/dice.py",
+  ],
+});
+
+const stdioClient = await experimental_createMCPClient({
+  transport,
+});
+
+const stdioTools = await stdioClient.tools();
 
 import { z } from "zod";
 
@@ -30,16 +48,13 @@ const tools: Record<string, Tool> = {
 
 export const getTools = async () => {
   try {
-    
-
     return {
       tools: {
         ...tools,
+        ...stdioTools,
       },
       breakdown: {},
-      closeClients: async () => {
-        
-      },
+      closeClients: async () => {},
     };
   } catch (error) {
     console.error("Error initializing MCP client:", error);

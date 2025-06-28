@@ -43,27 +43,7 @@ import Keybinding from "@/components/keybinding";
 import { cn } from "@/lib/utils";
 import { ServerConfigDialog } from "@/components/server-config-dialog";
 import { breakdownAtom, isMcpConfigOpenAtom } from "@/services/mcp/atoms";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import Link from "next/link";
-import { MessageSquare, Brain, Settings } from "lucide-react";
-import { ArrowRight } from "lucide-react";
-
-// Function to format date into a pretty relative time
-const formatRelativeTime = (dateString: string): string => {
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  if (diffInSeconds < 60) {
-    return `${diffInSeconds}s`;
-  } else if (diffInSeconds < 3600) {
-    return `${Math.floor(diffInSeconds / 60)}m`;
-  } else if (diffInSeconds < 86400) {
-    return `${Math.floor(diffInSeconds / 3600)}h`;
-  } else {
-    return `${Math.floor(diffInSeconds / 86400)}d`;
-  }
-};
+import { formatRelativeTime } from "../lib/formatRelativeTime";
 
 export default function ChatPage() {
   // Ref for the scroll viewport
@@ -235,10 +215,10 @@ export default function ChatPage() {
       }
 
       // Configure MCP
-      if (event.key === "m") {
-        event.preventDefault();
-        setMcpConfigOpen(true);
-      }
+      // if (event.key === "m") {
+      //   event.preventDefault();
+      //   setMcpConfigOpen(true);
+      // }
 
       // Configure Exports
       if (event.key === "e") {
@@ -571,13 +551,13 @@ export default function ChatPage() {
                 </div>
                 <div className="flex gap-2">
                   <ServerConfigDialog />
-                  <Button
+                  {/* <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setMcpConfigOpen(true)}
                   >
                     <Keybinding>M</Keybinding> MCP
-                  </Button>
+                  </Button> */}
                   {commitThread.length > 0 && (
                     <>
                       <Export />
@@ -641,76 +621,8 @@ export default function ChatPage() {
         <ToolsSidebar />
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="p-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <MessageSquare className="h-5 w-5" />
-              Support Dashboard
-            </CardTitle>
-            <CardDescription>
-              Real-time customer support analysis with AI agents
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
-              Monitor live customer calls with AI-powered insights and blockchain logging.
-            </p>
-            <Button asChild className="w-full">
-              <Link href="/support-dashboard">
-                Open Dashboard
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
+     
 
-        <Card className="p-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Brain className="h-5 w-5" />
-              Real AI Agents
-            </CardTitle>
-            <CardDescription>
-              Test AI agents with real models (OpenAI + local fallback)
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
-              Interact with AI agents using OpenAI or local models for customer analysis.
-            </p>
-            <Button asChild className="w-full">
-              <Link href="/real-agents">
-                Try AI Agents
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card className="p-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Settings className="h-5 w-5" />
-              Demo Mode
-            </CardTitle>
-            <CardDescription>
-              Simulated demo for hackathon presentation
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
-              Run a pre-configured demo with simulated data for presentations.
-            </p>
-            <Button asChild className="w-full">
-              <Link href="/demo">
-                Start Demo
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
     </SidebarProvider>
   );
 }
