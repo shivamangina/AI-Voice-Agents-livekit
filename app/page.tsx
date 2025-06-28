@@ -393,7 +393,7 @@ export default function ChatPage() {
         {/* Main Chat Content */}
         <div className="flex flex-col flex-1 h-full overflow-x-auto">
           <header className="p-4 border-b flex justify-between items-center">
-            <h1 className="text-xl font-semibold">Git Chat</h1>
+            <h1 className="text-xl font-semibold">Eliza Chat</h1>
           </header>
 
           <ScrollArea className="flex-1 p-4 space-y-4" ref={scrollAreaRef}>

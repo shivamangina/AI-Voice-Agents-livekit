@@ -10,8 +10,8 @@ import { join } from "path";
 import { z } from "zod";
 
 const tools: Record<string, Tool> = {
-  dummyTool: tool({
-    description: "Dummy tool for demo purposes and testing.",
+  weatherTool: tool({
+    description: "Get the weather for a given location.",
     parameters: z.object({
       location: z
         .string()
