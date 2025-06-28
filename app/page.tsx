@@ -43,6 +43,10 @@ import Keybinding from "@/components/keybinding";
 import { cn } from "@/lib/utils";
 import { ServerConfigDialog } from "@/components/server-config-dialog";
 import { breakdownAtom, isMcpConfigOpenAtom } from "@/services/mcp/atoms";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import { MessageSquare, Brain, Settings } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 // Function to format date into a pretty relative time
 const formatRelativeTime = (dateString: string): string => {
@@ -399,8 +403,8 @@ export default function ChatPage() {
           <ScrollArea className="flex-1 p-4 space-y-4" ref={scrollAreaRef}>
             <div className="max-w-xs lg:max-w-3xl mx-auto space-y-4 pb-20">
               {commitThread.length === 0 &&
-              !isLoading &&
-              currentCommitChildren.length === 0 ? (
+                !isLoading &&
+                currentCommitChildren.length === 0 ? (
                 <div className="text-center py-20 flex flex-col items-center gap-4">
                   <span className="text-muted-foreground">
                     <span className="text-xl text-muted-foreground flex items-center gap-2 justify-center">
@@ -515,10 +519,10 @@ export default function ChatPage() {
                             <span className="text-muted-foreground truncate">
                               {currentCommitChildrenIndexMap[commit.id] !==
                                 undefined && (
-                                <Keybinding>
-                                  {currentCommitChildrenIndexMap[commit.id] + 1}
-                                </Keybinding>
-                              )}
+                                  <Keybinding>
+                                    {currentCommitChildrenIndexMap[commit.id] + 1}
+                                  </Keybinding>
+                                )}
                               <span className="ml-2">{commit.author}</span>
                             </span>
                             <span>
@@ -635,6 +639,77 @@ export default function ChatPage() {
 
         {/* Tools Sidebar on the right */}
         <ToolsSidebar />
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="p-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <MessageSquare className="h-5 w-5" />
+              Support Dashboard
+            </CardTitle>
+            <CardDescription>
+              Real-time customer support analysis with AI agents
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-600 mb-4">
+              Monitor live customer calls with AI-powered insights and blockchain logging.
+            </p>
+            <Button asChild className="w-full">
+              <Link href="/support-dashboard">
+                Open Dashboard
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="p-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Brain className="h-5 w-5" />
+              Real AI Agents
+            </CardTitle>
+            <CardDescription>
+              Test AI agents with real models (OpenAI + local fallback)
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-600 mb-4">
+              Interact with AI agents using OpenAI or local models for customer analysis.
+            </p>
+            <Button asChild className="w-full">
+              <Link href="/real-agents">
+                Try AI Agents
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="p-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Settings className="h-5 w-5" />
+              Demo Mode
+            </CardTitle>
+            <CardDescription>
+              Simulated demo for hackathon presentation
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-600 mb-4">
+              Run a pre-configured demo with simulated data for presentations.
+            </p>
+            <Button asChild className="w-full">
+              <Link href="/demo">
+                Start Demo
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     </SidebarProvider>
   );

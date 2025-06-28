@@ -130,6 +130,8 @@ pnpm dev
 
 Visit `http://localhost:3000/support-dashboard` to see the live agent swarm in action!
 
+> 💡 **Pro Tip**: We've added convenient npm scripts for all common tasks. See [SCRIPTS_GUIDE.md](./SCRIPTS_GUIDE.md) for quick commands like `pnpm start-all`, `pnpm eliza:start`, etc.
+
 ## 🎮 Demo Walkthrough
 
 ### 1. **Start a Call**
