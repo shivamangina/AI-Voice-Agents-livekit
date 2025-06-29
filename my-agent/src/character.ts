@@ -9,11 +9,12 @@ import { type Character } from '@elizaos/core';
 export const character: Character = {
   name: 'Eliza',
   plugins: [
-    '@elizaos/plugin-sql',
     '@elizaos/plugin-sql', // MUST be first - provides database
-    '@elizaos/plugin-openai', // MUST be before knowledge - provides embeddings
+    ...(process.env.OPENAI_API_KEY ? ['@elizaos/plugin-openai'] : []),
     '@elizaos/plugin-knowledge',
     ...(process.env.TELEGRAM_BOT_TOKEN ? ['@elizaos/plugin-telegram'] : []),
+    ...(!process.env.IGNORE_BOOTSTRAP ? ['@elizaos/plugin-bootstrap'] : []),
+
 
   ],
   settings: {
