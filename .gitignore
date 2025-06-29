@@ -46,3 +46,4 @@ ignore/
 tmp/.cache/llm_calls.json
 
 .eliza
+dist
