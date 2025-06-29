@@ -10,27 +10,11 @@ export const character: Character = {
   name: 'Eliza',
   plugins: [
     '@elizaos/plugin-sql',
-    ...(process.env.ANTHROPIC_API_KEY ? ['@elizaos/plugin-anthropic'] : []),
-    ...(process.env.OPENROUTER_API_KEY ? ['@elizaos/plugin-openrouter'] : []),
-    ...(process.env.OLLAMA_API_ENDPOINT ? ['@elizaos/plugin-ollama'] : []),
-    ...(process.env.GOOGLE_GENERATIVE_AI_API_KEY ? ['@elizaos/plugin-google-genai'] : []),
-    ...(process.env.OPENAI_API_KEY ? ['@elizaos/plugin-openai'] : []),
-    ...(!process.env.ANTHROPIC_API_KEY &&
-      !process.env.OPENROUTER_API_KEY &&
-      !process.env.GOOGLE_GENERATIVE_AI_API_KEY &&
-      !process.env.OLLAMA_API_ENDPOINT &&
-      !process.env.OPENAI_API_KEY
-      ? ['@elizaos/plugin-local-ai']
-      : []),
-    ...(process.env.DISCORD_API_TOKEN ? ['@elizaos/plugin-discord'] : []),
-    ...(process.env.TWITTER_API_KEY &&
-      process.env.TWITTER_API_SECRET_KEY &&
-      process.env.TWITTER_ACCESS_TOKEN &&
-      process.env.TWITTER_ACCESS_TOKEN_SECRET
-      ? ['@elizaos/plugin-twitter']
-      : []),
+    '@elizaos/plugin-sql', // MUST be first - provides database
+    '@elizaos/plugin-openai', // MUST be before knowledge - provides embeddings
+    '@elizaos/plugin-knowledge',
     ...(process.env.TELEGRAM_BOT_TOKEN ? ['@elizaos/plugin-telegram'] : []),
-    ...(!process.env.IGNORE_BOOTSTRAP ? ['@elizaos/plugin-bootstrap'] : []),
+
   ],
   settings: {
     secrets: {},

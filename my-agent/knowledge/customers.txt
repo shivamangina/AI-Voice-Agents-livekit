@@ -1,0 +1,11 @@
+CustomerID,Name,Email,Phone,Address,RegistrationDate,Status
+CUST001,Sarah Johnson,satya@email.com,+1-555-0123,"123 Oak Street, New York, NY 10001",2024-01-15,Active
+CUST002,Michael Chen,michael.chen@email.com,+1-555-0124,"456 Pine Avenue, Los Angeles, CA 90210",2024-02-03,Active
+CUST003,Emily Rodriguez,emily.rodriguez@email.com,+1-555-0125,"789 Maple Drive, Chicago, IL 60601",2024-01-28,Active
+CUST004,David Thompson,david.thompson@email.com,+1-555-0126,"321 Elm Court, Houston, TX 77001",2024-03-10,Active
+CUST005,Lisa Wang,lisa.wang@email.com,+1-555-0127,"654 Birch Lane, Phoenix, AZ 85001",2024-02-18,Inactive
+CUST006,James Wilson,james.wilson@email.com,+1-555-0128,"987 Cedar Road, Philadelphia, PA 19101",2024-01-05,Active
+CUST007,Maria Garcia,maria.garcia@email.com,+1-555-0129,"147 Willow Way, San Antonio, TX 78201",2024-03-22,Active
+CUST008,Robert Brown,robert.brown@email.com,+1-555-0130,"258 Spruce Street, San Diego, CA 92101",2024-02-12,Active
+CUST009,Jennifer Lee,jennifer.lee@email.com,+1-555-0131,"369 Ash Boulevard, Dallas, TX 75201",2024-01-20,Inactive
+CUST010,Christopher Davis,christopher.davis@email.com,+1-555-0132,"741 Poplar Place, San Jose, CA 95101",2024-03-05,Active
