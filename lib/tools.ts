@@ -9,7 +9,7 @@ const transport = new Experimental_StdioMCPTransport({
     "fastmcp",
     "fastmcp",
     "run",
-    "/Users/shivakumarmangina/Desktop/mcpserver/elizaos-hackathon/mcp-servers/dice-server/dice.py",
+    "/Users/shivakumarmangina/Desktop/code/AI-Voice-Agents-livekit/mcp-servers/dice-server/dice.py",
   ],
 });
 

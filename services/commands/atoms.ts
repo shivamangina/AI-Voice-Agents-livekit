@@ -4,7 +4,7 @@ import { atomWithStorage } from "jotai/utils";
 
 export const modelNameAtom = atomWithStorage<AvailableModel>(
   "modelName",
-  "google/gemini-2.0-flash"
+  "openai/gpt-4.1"
 );
 
 export const pendingMessageConfigAtom = atom((get) => {
